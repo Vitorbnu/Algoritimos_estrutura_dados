@@ -1,25 +1,25 @@
 package model;
 
-public class ListaEstatica {
+public class ListaEstatica<T>{
 
-	private int[] info;
+	private Object[] info;
 	private int tamanho;
 
 	public ListaEstatica() {
-		info = new int[10];
+		info = new Object[10];
 	}
 
 	private void redimensionar() {
-		int[] newVetor = new int[info.length];
+		Object[] newVetor = new Object[info.length];
 		for (int i = 0; i < info.length; i++) {
 			newVetor[i] = info[i];
 		}
-		info = new int[newVetor.length + 10];
+		info = new Object[newVetor.length + 10];
 		info = newVetor;
 
 	}
 
-	public void inserir(int valor) {
+	public void inserir(T valor) {
 		if (tamanho == info.length + 1) {
 			redimensionar();
 		}
@@ -34,7 +34,7 @@ public class ListaEstatica {
 		}
 	}
 
-	public int buscar(int valor) {
+	public int buscar(T valor) {
 		for (int i = 0; i < tamanho; i++) {
 			if (info[i] == valor) {
 				return i;
@@ -44,7 +44,7 @@ public class ListaEstatica {
 		return -1;
 	}
 
-	public void retirar(int valor) {
+	public void retirar(T valor) {
 		int posicao = buscar(valor);
 		if (posicao > -1) {
 			for (int i = posicao; i < tamanho - 1; i++) {
@@ -57,10 +57,10 @@ public class ListaEstatica {
 	}
 
 	public void liberar() {
-		info = new int[10];
+		info = new Object[10];
 	}
 
-	public int obterElemento(int posicao) {
+	public T obterElemento(int posicao) {
 		if (posicao >= 0 && (posicao < tamanho)) { // Se a posição é válida
 			return info[posicao]; // Retorna o elemento na posição especificada
 		} else {
