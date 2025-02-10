@@ -62,7 +62,7 @@ public class ListaEstatica<T>{
 
 	public T obterElemento(int posicao) {
 		if (posicao >= 0 && (posicao < tamanho)) { // Se a posição é válida
-			return info[posicao]; // Retorna o elemento na posição especificada
+			return (T) info[posicao]; // Retorna o elemento na posição especificada
 		} else {
 			throw new java.lang.IndexOutOfBoundsException(); // Lança uma exceção se a posição for inválida
 
